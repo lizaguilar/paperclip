@@ -1,0 +1,18 @@
+<h1>Welcome! Upload a photo ^_^</h1>
+
+<%= form_for @user, :url => users_path, :html => { :multipart => true } do |f| %>
+  <p><strong>Username:</strong></p>
+  <p><%= f.text_field :username %></p>
+  <p><strong>Upload photo:</strong></p>
+  <p><%= f.file_field :avatar %>
+  <%= f.submit %></p>
+<% end %>
+<h2 id="all_users">Users</h2>
+<ul>
+<% @users.each do |u| %>
+  <li>
+    <%= u.username %><br><br>
+    <%= image_tag u.avatar.url(:medium) %>
+  </li><br>
+<% end %>
+</ul>
